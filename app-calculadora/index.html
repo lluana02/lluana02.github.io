@@ -1,133 +1,38 @@
-import 'package:flutter/material.dart';
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
 
-void main() {
-  runApp(CalculadoraApp());
-}
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
 
-class CalculadoraApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Calculadora Flutter',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: CalculadoraPage(),
-    );
-  }
-}
+    For more details: 
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
 
-class CalculadoraPage extends StatefulWidget {
-  @override
-  _CalculadoraPageState createState() => _CalculadoraPageState();
-}
+    This is a placeholder for base href that will be replaced by the value of
+    the --base-href argument provided to flutter build.
+  -->
+  <base href="/"> app calculadora
 
-class _CalculadoraPageState extends State<CalculadoraPage> {
-  String _output = '0';
-  String _entrada = '';
-  double _num1 = 0;
-  double _num2 = 0;
-  String _operador = '';
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
 
-  void _botaoPressionado(String botaoTexto) {
-    setState(() {
-      if (botaoTexto == 'C') {
-        _entrada = '';
-        _output = '0';
-        _num1 = 0;
-        _num2 = 0;
-        _operador = '';
-      } else if (botaoTexto == '+' || botaoTexto == '-' || botaoTexto == '*' || botaoTexto == '/') {
-        _num1 = double.parse(_entrada);
-        _operador = botaoTexto;
-        _entrada = '';
-      } else if (botaoTexto == '=') {
-        _num2 = double.parse(_entrada);
-        if (_operador == '+') {
-          _output = (_num1 + _num2).toString();
-        } else if (_operador == '-') {
-          _output = (_num1 - _num2).toString();
-        } else if (_operador == '*') {
-          _output = (_num1 * _num2).toString();
-        } else if (_operador == '/') {
-          _output = (_num1 / _num2).toString();
-        }
-        _entrada = _output;
-      } else {
-        _entrada += botaoTexto;
-        _output = _entrada;
-      }
-    });
-  }
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="myapp">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
-  Widget _buildBotao(String botaoTexto) {
-    return Expanded(
-      child: ElevatedButton(
-        onPressed: () => _botaoPressionado(botaoTexto),
-        child: Text(
-          botaoTexto,
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
-    );
-  }
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Calculadora Flutter'),
-      ),
-      body: Column(
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 24, horizontal: 12),
-            alignment: Alignment.centerRight,
-            child: Text(
-              _output,
-              style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
-            ),
-          ),
-          Expanded(child: Divider()),
-          Column(
-            children: [
-              Row(
-                children: [
-                  _buildBotao('7'),
-                  _buildBotao('8'),
-                  _buildBotao('9'),
-                  _buildBotao('/'),
-                ],
-              ),
-              Row(
-                children: [
-                  _buildBotao('4'),
-                  _buildBotao('5'),
-                  _buildBotao('6'),
-                  _buildBotao('*'),
-                ],
-              ),
-              Row(
-                children: [
-                  _buildBotao('1'),
-                  _buildBotao('2'),
-                  _buildBotao('3'),
-                  _buildBotao('-'),
-                ],
-              ),
-              Row(
-                children: [
-                  _buildBotao('C'),
-                  _buildBotao('0'),
-                  _buildBotao('='),
-                  _buildBotao('+'),
-                ],
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
+  <title>myapp</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
